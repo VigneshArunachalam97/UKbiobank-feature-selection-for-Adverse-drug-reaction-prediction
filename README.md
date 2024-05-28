@@ -21,12 +21,26 @@
   
   **Step 3:** Find the common variant between the two datasets and keep the intersecting variants for further analysi
 
-         Rscript 
+         Rscript common_variant.R ukb_complete_data1 ukb_complete_data2 ukb_2sets
+         plink --bfile ukb_complete_final 
+               --extract ukb_2sets_common_variants.txt 
+               --keep-allele-order
+               --make-bed
+               --out ukb_complete_common_variant
   
-  **Step 3**: Identify the independent variant using the plink pruning function
+  **Step 4**: Identify the independent variant using the plink pruning function
 
-          plink --bfile ukb_complete_final 
+          plink --bfile ukb_complete_common_variant
                 --keep-allele-order 
                 --indep-pairwise 50 5 0.2 
                 --out ukb_complete_indep
-        
+  
+ **Step 5**: Calculate the heterozygosity for all individuals using the pruned variants and remove the samples from further analysis if the sample heterozygosity rate is not beyond the +/- 3Standard deviation of heterozygosity rate
+
+         plink --bfile ukb_complete_common_variant
+               --extract ukb_complete_indep.prune.in
+               --keep-allele-order
+               --het
+               --out ukb_R_check
+         Rscript Heterozysity_plot_filter.R ukb_R_check.het
+               
