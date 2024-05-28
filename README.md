@@ -19,6 +19,9 @@
                   --out ${wd}/ukb_complete_final 
                   --memory 250000
   
+  **Step 3:** Find the common variant between the two datasets and keep the intersecting variants for further analysi
+
+         Rscript 
   
   **Step 3**: Identify the independent variant using the plink pruning function
 
