@@ -43,4 +43,8 @@
                --het
                --out ukb_R_check
          Rscript Heterozysity_plot_filter.R ukb_R_check.het
-               
+         plink --bfile ukb_complete_common_variant
+               --remove ukb_fail-het.txt
+               --keep-allele-order
+               --make-bed
+               --out ukb_complete_common_variant_final
