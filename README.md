@@ -48,3 +48,11 @@
                --keep-allele-order
                --make-bed
                --out ukb_complete_common_variant_final
+
+  **Step 6**: PCA analysis to determine the population structure of the samples
+
+       plink --bfile ukb_complete_common_variant_final
+             --keep-allele-order
+             --extract ukb_complete_indep.prune.in
+             --pca
+             --out ukb_pca
