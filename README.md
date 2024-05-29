@@ -49,7 +49,7 @@
                --make-bed
                --out ukb_complete_common_variant_final
 
-  **Step 6**: PCA analysis to determine the population structure of the samples
+  **Step 6**: After the QC steps, we had 11599200 common variants and 26606 individuals. PCA analysis to determine the population structure of the samples
 
        plink --bfile ukb_complete_common_variant_final
              --keep-allele-order
